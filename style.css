@@ -1,79 +1,106 @@
-.weekdays {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+/* Page setup */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    overflow: hidden;
+}
+
+
+/* Main title */
+h1 {
     text-align: center;
-    font-weight: bold;
-    margin-bottom: 10px;
+    margin: 0;
+    font-size: 48px;
 }
 
-#calendar {
+
+/* Month title */
+#month-title {
+    text-align: center;
+    font-size: 36px;
+    margin: 10px 0 20px;
+}
+
+
+/* Weekday header */
+.weekdays {
+
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
+
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+
+    margin-bottom: 10px;
+
 }
 
+
+/* Calendar grid */
+#calendar {
+
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 12px;
+
+    height: calc(100vh - 180px);
+
+}
+
+
+/* Individual day */
 .day {
-    border: 1px solid #ccc;
-    min-height: 100px;
-    padding: 5px;
-}
 
-.empty {
-    border: none;
-}
+    background: white;
 
+    border: 2px solid #ccc;
 
-.popup {
+    border-radius: 12px;
 
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,.5);
+    min-height: 120px;
+
+    padding: 10px;
+
+    position: relative;
 
 }
 
 
-.popup-content {
+/* Date number */
+.day h3 {
 
-    background:white;
-    width:400px;
-    margin:100px auto;
-    padding:20px;
-    border-radius:10px;
+    margin: 0;
 
-}
-
-
-.close {
-
-    float:right;
-    cursor:pointer;
-    font-size:24px;
+    font-size: 28px;
 
 }
 
 
-.event {
+/* Icons */
+.icon {
 
-    border-top:1px solid #ddd;
-    padding:10px;
+    width: 80px;
+
+    height: 80px;
+
+    object-fit: contain;
+
+    cursor: pointer;
 
 }
 
 
-.event img {
-
-    width:50px;
-
-}
-
-
+/* Two-event split */
 .split-icons {
 
     display:flex;
+
+    height:80px;
 
 }
 
@@ -81,9 +108,13 @@
 .split-icons img {
 
     width:50%;
+
+    object-fit:contain;
+
 }
 
 
+/* Multiple events */
 .multi-icon {
 
     position:relative;
@@ -93,7 +124,7 @@
 
 .multi-icon img {
 
-    width:70px;
+    width:80px;
 
 }
 
@@ -101,11 +132,59 @@
 .multi-icon span {
 
     position:absolute;
-    right:5px;
-    bottom:5px;
-    background:black;
+
+    right:0;
+
+    bottom:0;
+
+    font-size:22px;
+
+    background:#222;
+
     color:white;
-    border-radius:50%;
-    padding:5px;
+
+    padding:5px 8px;
+
+    border-radius:20px;
+
+}
+
+
+/* Popup */
+.popup {
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+}
+
+
+.popup-content {
+
+    background:white;
+
+    width:600px;
+
+    max-height:700px;
+
+    overflow:auto;
+
+    margin:150px auto;
+
+    padding:30px;
+
+    border-radius:15px;
+
+}
+
+
+.event img {
+
+    width:80px;
 
 }
