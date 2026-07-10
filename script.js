@@ -64,6 +64,10 @@ for(let i = 0; i < firstDay; i++){
 
 
 // Create actual calendar days
+function createCalendar(){
+
+}
+    
 for(let day = 1; day <= daysInMonth; day++){
 
     let box = document.createElement("div");
