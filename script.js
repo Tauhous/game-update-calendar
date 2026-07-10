@@ -20,6 +20,47 @@ const monthNames = [
     "December"
 ];
 
+const events = {
+    5: [
+        {
+            title: "Game Night",
+            icon: "assets/icons/game.png",
+            description: "A game scheduled for today."
+        }
+    ],
+
+    12: [
+        {
+            title: "Team A vs Team B",
+            icon: "assets/icons/game.png",
+            description: "First game."
+        },
+        {
+            title: "Team C vs Team D",
+            icon: "assets/icons/game.png",
+            description: "Second game."
+        }
+    ],
+
+    20: [
+        {
+            title: "Tournament",
+            icon: "assets/icons/game.png",
+            description: "Multiple games happening."
+        },
+        {
+            title: "Final Match",
+            icon: "assets/icons/game.png",
+            description: "Championship match."
+        },
+        {
+            title: "Awards",
+            icon: "assets/icons/trophy.png",
+            description: "Awards ceremony."
+        }
+    ]
+};
+
 document.getElementById("month-title").textContent =
     `${monthNames[currentMonth]} ${currentYear}`;
 
