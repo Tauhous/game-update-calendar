@@ -147,10 +147,43 @@ box.innerHTML = `
 
 
 function openItem(day){
-    alert(
-        "Opening item for " +
-        monthNames[currentMonth] +
-        " " +
-        day
-    );
+
+    let dayEvents = events[day] || [];
+
+    if(dayEvents.length === 0){
+        return;
+    }
+
+
+    document.getElementById("popup-title").textContent =
+        monthNames[currentMonth] + " " + day;
+
+
+    let content = "";
+
+    dayEvents.forEach(event => {
+
+        content += `
+            <div class="event">
+                <img src="${event.icon}">
+                <h3>${event.title}</h3>
+                <p>${event.description}</p>
+            </div>
+        `;
+
+    });
+
+
+    document.getElementById("popup-items").innerHTML = content;
+
+
+    document.getElementById("popup").style.display = "block";
+}
+
+
+
+function closePopup(){
+
+    document.getElementById("popup").style.display = "none";
+
 }
