@@ -97,13 +97,50 @@ for(let day = 1; day <= daysInMonth; day++){
     let box = document.createElement("div");
     box.className = "day";
 
-    box.innerHTML = `
-        <h3>${day}</h3>
+let dayEvents = events[day] || [];
+
+let iconHTML = "";
+
+if(dayEvents.length === 1){
+
+    iconHTML = `
         <img 
-          class="icon"
-          src="assets/icons/game.png"
-          onclick="openItem(${day})">
+        class="icon"
+        src="${dayEvents[0].icon}">
     `;
+
+}
+
+else if(dayEvents.length === 2){
+
+    iconHTML = `
+        <div class="split-icons">
+            <img src="${dayEvents[0].icon}">
+            <img src="${dayEvents[1].icon}">
+        </div>
+    `;
+
+}
+
+else if(dayEvents.length > 2){
+
+    iconHTML = `
+        <div class="multi-icon">
+            <img src="${dayEvents[0].icon}">
+            <span>2+</span>
+        </div>
+    `;
+
+}
+
+
+box.innerHTML = `
+    <h3>${day}</h3>
+
+    <div onclick="openItem(${day})">
+        ${iconHTML}
+    </div>
+`;
 
     calendar.appendChild(box);
 }
