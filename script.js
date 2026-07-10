@@ -1,15 +1,5 @@
 let events = {};
 
-fetch("events.json")
-    .then(response => response.json())
-    .then(data => {
-
-        events = data;
-
-        createCalendar();
-
-    });
-
 const calendar = document.getElementById("calendar");
 
 const today = new Date();
@@ -53,89 +43,126 @@ const daysInMonth = new Date(
 ).getDate();
 
 
-// Add blank spaces before first day
-for(let i = 0; i < firstDay; i++){
+// Load events.json first
+fetch("events.json")
+    .then(response => {
 
-    let emptyBox = document.createElement("div");
-    emptyBox.className = "day empty";
+        if (!response.ok) {
+            throw new Error("Could not load events.json");
+        }
 
-    calendar.appendChild(emptyBox);
-}
+        return response.json();
+
+    })
+    .then(data => {
+
+        events = data;
+
+        createCalendar();
+
+    })
+    .catch(error => {
+
+        console.error(error);
+
+    });
 
 
-// Create actual calendar days
+// Create calendar
 function createCalendar(){
 
+    // Add blank spaces before first day
+    for(let i = 0; i < firstDay; i++){
+
+        let emptyBox = document.createElement("div");
+        emptyBox.className = "day empty";
+
+        calendar.appendChild(emptyBox);
+
+    }
+
+
+    // Create actual calendar days
+    for(let day = 1; day <= daysInMonth; day++){
+
+        let box = document.createElement("div");
+        box.className = "day";
+
+
+        if(day === today.getDate()){
+
+            box.classList.add("today");
+
+        }
+
+
+        let dayEvents = events[day] || [];
+
+        let iconHTML = "";
+
+
+        if(dayEvents.length === 1){
+
+            iconHTML = `
+                <img 
+                    class="icon"
+                    src="${dayEvents[0].icon}">
+            `;
+
+        }
+
+
+        else if(dayEvents.length === 2){
+
+            iconHTML = `
+                <div class="split-icons">
+                    <img src="${dayEvents[0].icon}">
+                    <img src="${dayEvents[1].icon}">
+                </div>
+            `;
+
+        }
+
+
+        else if(dayEvents.length > 2){
+
+            iconHTML = `
+                <div class="multi-icon">
+                    <img src="${dayEvents[0].icon}">
+                    <span>2+</span>
+                </div>
+            `;
+
+        }
+
+
+        box.innerHTML = `
+            <h3>${day}</h3>
+
+            <div onclick="openItem(${day})">
+                ${iconHTML}
+            </div>
+        `;
+
+
+        calendar.appendChild(box);
+
+    }
+
 }
-    
-for(let day = 1; day <= daysInMonth; day++){
-
-    let box = document.createElement("div");
-    box.className = "day";
-
-if(
-    day === today.getDate()
-){
-
-    box.classList.add("today");
-
-}
-
-let dayEvents = events[day] || [];
-
-let iconHTML = "";
-
-if(dayEvents.length === 1){
-
-    iconHTML = `
-        <img 
-        class="icon"
-        src="${dayEvents[0].icon}">
-    `;
-
-}
-
-else if(dayEvents.length === 2){
-
-    iconHTML = `
-        <div class="split-icons">
-            <img src="${dayEvents[0].icon}">
-            <img src="${dayEvents[1].icon}">
-        </div>
-    `;
-
-}
-
-else if(dayEvents.length > 2){
-
-    iconHTML = `
-        <div class="multi-icon">
-            <img src="${dayEvents[0].icon}">
-            <span>2+</span>
-        </div>
-    `;
-
-}
 
 
-box.innerHTML = `
-    <h3>${day}</h3>
 
-    <div onclick="openItem(${day})">
-        ${iconHTML}
-    </div>
-`;
-
-    calendar.appendChild(box);
-}
-
-
+// Open popup
 function openItem(day){
 
     let dayEvents = events[day] || [];
 
+
     if(dayEvents.length === 0){
+
         return;
+
     }
 
 
@@ -145,13 +172,18 @@ function openItem(day){
 
     let content = "";
 
+
     dayEvents.forEach(event => {
 
         content += `
             <div class="event">
+
                 <img src="${event.icon}">
+
                 <h3>${event.title}</h3>
+
                 <p>${event.description}</p>
+
             </div>
         `;
 
@@ -162,10 +194,12 @@ function openItem(day){
 
 
     document.getElementById("popup").style.display = "block";
+
 }
 
 
 
+// Close popup
 function closePopup(){
 
     document.getElementById("popup").style.display = "none";
