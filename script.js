@@ -97,6 +97,14 @@ for(let day = 1; day <= daysInMonth; day++){
     let box = document.createElement("div");
     box.className = "day";
 
+if(
+    day === today.getDate()
+){
+
+    box.classList.add("today");
+
+}
+
 let dayEvents = events[day] || [];
 
 let iconHTML = "";
