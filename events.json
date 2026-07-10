@@ -1,0 +1,40 @@
+{
+    "5": [
+        {
+            "title": "Game Night",
+            "icon": "assets/icons/game.png",
+            "description": "A game scheduled today."
+        }
+    ],
+
+    "12": [
+        {
+            "title": "Team A vs Team B",
+            "icon": "assets/icons/game.png",
+            "description": "First game."
+        },
+        {
+            "title": "Team C vs Team D",
+            "icon": "assets/icons/game.png",
+            "description": "Second game."
+        }
+    ],
+
+    "20": [
+        {
+            "title": "Championship",
+            "icon": "assets/icons/trophy.png",
+            "description": "Final match."
+        },
+        {
+            "title": "Awards",
+            "icon": "assets/icons/game.png",
+            "description": "Awards ceremony."
+        },
+        {
+            "title": "Interview",
+            "icon": "assets/icons/game.png",
+            "description": "Post-game interview."
+        }
+    ]
+}
