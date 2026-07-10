@@ -65,17 +65,21 @@ h1 {
 /* Individual day */
 .day {
 
-    background: white;
+    background:white;
 
-    border: 2px solid #ccc;
+    border:2px solid #ccc;
 
-    border-radius: 12px;
+    border-radius:12px;
 
-    min-height: 120px;
+    padding:10px;
 
-    padding: 10px;
+    display:flex;
 
-    position: relative;
+    flex-direction:column;
+
+    justify-content:flex-start;
+
+    overflow:hidden;
 
 }
 
@@ -93,13 +97,11 @@ h1 {
 /* Icons */
 .icon {
 
-    width: 80px;
+    width:min(80px, 8vh);
 
-    height: 80px;
+    height:min(80px, 8vh);
 
-    object-fit: contain;
-
-    cursor: pointer;
+    object-fit:contain;
 
 }
 
