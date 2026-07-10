@@ -37,4 +37,12 @@
             "description": "Post-game interview."
         }
     ]
+
+    "28": [
+    {
+        "title": "Halo Combat Evolved",
+        "icon": "assets/icons/haloce.png",
+        "description": "Halo 1, Again"
+    }
+]
 }
