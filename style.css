@@ -21,3 +21,91 @@
 .empty {
     border: none;
 }
+
+
+.popup {
+
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.5);
+
+}
+
+
+.popup-content {
+
+    background:white;
+    width:400px;
+    margin:100px auto;
+    padding:20px;
+    border-radius:10px;
+
+}
+
+
+.close {
+
+    float:right;
+    cursor:pointer;
+    font-size:24px;
+
+}
+
+
+.event {
+
+    border-top:1px solid #ddd;
+    padding:10px;
+
+}
+
+
+.event img {
+
+    width:50px;
+
+}
+
+
+.split-icons {
+
+    display:flex;
+
+}
+
+
+.split-icons img {
+
+    width:50%;
+}
+
+
+.multi-icon {
+
+    position:relative;
+
+}
+
+
+.multi-icon img {
+
+    width:70px;
+
+}
+
+
+.multi-icon span {
+
+    position:absolute;
+    right:5px;
+    bottom:5px;
+    background:black;
+    color:white;
+    border-radius:50%;
+    padding:5px;
+
+}
