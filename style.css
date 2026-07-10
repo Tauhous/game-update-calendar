@@ -197,3 +197,16 @@ h1 {
     width:80px;
 
 }
+
+.calendar-container {
+
+    height: calc(100vh - 230px);
+
+}
+
+
+#calendar {
+
+    height:100%;
+
+}
