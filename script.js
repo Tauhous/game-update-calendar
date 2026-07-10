@@ -1,19 +1,10 @@
 const calendar = document.getElementById("calendar");
 
-// Get the current date
 const today = new Date();
 
-const currentMonth = today.getMonth(); // January = 0, December = 11
+const currentMonth = today.getMonth();
 const currentYear = today.getFullYear();
 
-// Find how many days are in this month
-const daysInMonth = new Date(
-    currentYear,
-    currentMonth + 1,
-    0
-).getDate();
-
-// Optional: show the month name
 const monthNames = [
     "January",
     "February",
@@ -33,7 +24,33 @@ document.getElementById("month-title").textContent =
     `${monthNames[currentMonth]} ${currentYear}`;
 
 
-// Create calendar days
+// Find first day of month (0 = Sunday, 6 = Saturday)
+const firstDay = new Date(
+    currentYear,
+    currentMonth,
+    1
+).getDay();
+
+
+// Find number of days in month
+const daysInMonth = new Date(
+    currentYear,
+    currentMonth + 1,
+    0
+).getDate();
+
+
+// Add blank spaces before first day
+for(let i = 0; i < firstDay; i++){
+
+    let emptyBox = document.createElement("div");
+    emptyBox.className = "day empty";
+
+    calendar.appendChild(emptyBox);
+}
+
+
+// Create actual calendar days
 for(let day = 1; day <= daysInMonth; day++){
 
     let box = document.createElement("div");
@@ -52,5 +69,10 @@ for(let day = 1; day <= daysInMonth; day++){
 
 
 function openItem(day){
-    alert("Opening item for " + monthNames[currentMonth] + " " + day);
+    alert(
+        "Opening item for " +
+        monthNames[currentMonth] +
+        " " +
+        day
+    );
 }
