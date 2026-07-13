@@ -101,15 +101,19 @@ function createCalendar(){
         let iconHTML = "";
 
 
-        if(dayEvents.length === 1){
+if(dayEvents.length === 1){
 
-            iconHTML = `
-                <img 
-                    class="icon"
-                    src="${dayEvents[0].icon}">
-            `;
+    const featuredClass = dayEvents[0].featured
+        ? " featured-event"
+        : "";
 
-        }
+    iconHTML = `
+        <img
+            class="icon${featuredClass}"
+            src="${dayEvents[0].icon}">
+    `;
+
+}
 
 
         else if(dayEvents.length === 2){
