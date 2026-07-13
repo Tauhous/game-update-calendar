@@ -219,34 +219,8 @@ h1 {
 
 }
 .featured-event:hover {
-    animation: flameEffect 0.4s infinite alternate;
-}
-
-@keyframes flameEffect {
-
-    0% {
-        filter:
-            drop-shadow(0 0 5px orange)
-            drop-shadow(0 0 10px red);
-
-        transform: scale(1);
-    }
-
-    50% {
-        filter:
-            drop-shadow(0 0 10px orange)
-            drop-shadow(0 0 20px red)
-            drop-shadow(0 0 30px yellow);
-
-        transform: scale(1.05);
-    }
-
-    100% {
-        filter:
-            drop-shadow(0 0 8px orange)
-            drop-shadow(0 0 15px red);
-
-        transform: scale(1);
-    }
-
+    filter:
+        drop-shadow(0 0 8px orange)
+        drop-shadow(0 0 16px orange)
+        drop-shadow(0 0 24px orange);
 }
