@@ -42,7 +42,7 @@
     {
         "title": "Halo Combat Evolved",
         "icon": "assets/icons/haloce.png",
-        "description": "Halo 1, Again"
+        "description": "Halo 1, Again",
         "featured": true
     }
 ]
